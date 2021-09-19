@@ -1,2 +1,6 @@
 # Ciencia-de-la-Computacion
-CComp 2-1Grupo 1
+TIC TAC TOE
+CComp 2-1 Grupo 1
+- Alexander Carpio Mamani
+- Cristian Mellado Baca
+- Marcelo Torres Acuña

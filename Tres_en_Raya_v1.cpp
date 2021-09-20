@@ -34,8 +34,9 @@ int main (){
 			std::cout << "==================================================\n\n";
 			std::cout << "Enter name player 1:";
 			// std::cin>>name1;  // solo captura hasta cuando haga espacio.
-      			fflush(stdin);  // para borrar el buffer del teclado.
-			std::cin.getline(name1, 40, '\n');
+      			// fflush(stdin);  // para borrar el buffer del teclado.
+			// std::cin.getline(name1, 40, '\n');
+			std::cin>>name1;
 			
 			do{
 				std::cout << "Enter symbol player 1 (X,O):";
@@ -46,8 +47,9 @@ int main (){
 			else p2 = 'X';
 			
 			std::cout << "Enter name player 2:";
-      			fflush(stdin);
-			std::cin.getline(name2, 40, '\n');  // variable, espacio de memoria, fin de captuda de datos.
+      			// fflush(stdin);
+			// std::cin.getline(name2, 40, '\n');  // variable, espacio de memoria, fin de captuda de datos.
+			std::cin>>name2;
 			
 			turno = p1;  // empezamos con el player 1
 			

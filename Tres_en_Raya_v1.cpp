@@ -5,13 +5,12 @@
 //		* Cristian Mellado Baca
 //		* Marcelo Torres Acuña
 //		* Alexander Carpio Mamani
-
 #include <iostream>  // libreria estandar para usar cin & cout
 #include <time.h>    // para usar random o rand
 
 int main (){
 	int numero, option;
-	char name1[40], name2[40], p1='X',p2='O', turno;
+	char name1[40], name2[40], p1, p2, turno;
 	bool error;
 	
 	while (1){	
@@ -26,7 +25,7 @@ int main (){
 		std::cin>>option;
 		
 		// variables inicializadas por defectuo.
-		char a='1', b='2', c='3', d='4', e='5', f='6', g='7', h='8', i='9', winer='N';
+		char a='1', b='2', c='3', d='4', e='5', f='6', g='7', h='8', i='9';
 		
 		if(option==1){
 			std::cout << "\n\n==================================================\n";
@@ -82,24 +81,22 @@ int main (){
 
 				//Posibles combinaciones para determinar un ganador
 				if((a+b+c==p1*3)||(a+d+g==p1*3)||(a+e+i==p1*3)||(c+e+g==p1*3)||(c+f+i==p1*3)||(d+e+f==p1*3)||(g+h+i==p1*3)||(b+e+h==p1*3)){
-					winer = p1;
+					std::cout << " ==================================================\n";
+					std::cout << " ==================================================\n";
+					std::cout << " \t\t El ganador es "<<name1<<"\n";
+					std::cout << " ==================================================\n";
+					std::cout << " ==================================================\n";
+					break;  // salimos del bucle de 1v1
 				}
 				if((a+b+c==p2*3)||(a+d+g==p2*3)||(a+e+i==p2*3)||(c+e+g==p2*3)||(c+f+i==p2*3)||(d+e+f==p2*3)||(g+h+i==p2*3)||(b+e+h==p2*3)){
-					winer = p2;
+					std::cout << " ==================================================\n";
+					std::cout << " ==================================================\n";
+					std::cout << " \t\t El ganador es "<<name2<<"\n";
+					std::cout << " ==================================================\n";
+					std::cout << " ==================================================\n";
+					break;
 				}
 				
-        			// impresion del ganador.
-				if (winer!='N'){
-					std::cout << "==================================================\n";
-					std::cout << "==================================================\n";
-					if (p1==winer)
-						std::cout << "                \""<<name1 <<"\" WIN "<<"\n";
-					else
-						std::cout << "                \""<<name2 <<"\" WIN "<<"\n";
-					std::cout << "==================================================\n";
-					std::cout << "==================================================\n\n";
-					break;  // salimos del while o bucle.
-				}
 
 				//En este if usamos el codigo ascci de "O=79" y "X=88" donde hay 5 "O" y 4 "X" esto porque el minimo debe ser el numero menor como es el caso de 5"O"s para superar el muro de todas las variables utilizadas.
 				if (a+b+c+d+e+f+g+h+i >= 747){
@@ -165,7 +162,6 @@ int main (){
 
 		}
 		else if (option==2){
-			char a='1', b='2', c='3', d='4', e='5', f='6', g='7', h='8', i='9', winer='N';
 			srand (time(NULL));
 			
 			std::cout << "\n\n==================================================\n";
@@ -211,21 +207,19 @@ int main (){
 				
 				
 				if((a+b+c==p1*3)||(a+d+g==p1*3)||(a+e+i==p1*3)||(c+e+g==p1*3)||(c+f+i==p1*3)||(d+e+f==p1*3)||(g+h+i==p1*3)||(b+e+h==p1*3)){
-					winer = p1;
+					std::cout << " ==================================================\n";
+					std::cout << " ==================================================\n";
+					std::cout << " \t\t El ganador es Tú \n";
+					std::cout << " ==================================================\n";
+					std::cout << " ==================================================\n";
+					break;
 				}
 				if((a+b+c==p2*3)||(a+d+g==p2*3)||(a+e+i==p2*3)||(c+e+g==p2*3)||(c+f+i==p2*3)||(d+e+f==p2*3)||(g+h+i==p2*3)||(b+e+h==p2*3)){
-					winer = p2;
-				}
-				
-				if (winer!='N'){
-					std::cout << "==================================================\n";
-					std::cout << "==================================================\n";
-					if (p1==winer)
-						std::cout << "                \"YOU WIN\" "<<"\n";
-					else
-						std::cout << "                \"BOT WIN\" "<<"\n";
-					std::cout << "==================================================\n";
-					std::cout << "==================================================\n\n";
+					std::cout << " ==================================================\n";
+					std::cout << " ==================================================\n";
+					std::cout << " \t\t El ganador es el Bot\n";
+					std::cout << " ==================================================\n";
+					std::cout << " ==================================================\n";
 					break;
 				}
 				
@@ -253,7 +247,7 @@ int main (){
 						std::cout<<" con \""<< turno <<"\" : ";std::cin>>numero;
 					}
 					else{
-						if (option == 1){
+						if (option == 1 || option==2 || option==3){
 							numero = 1 + rand() % 9; // random [1-9]
 						}
 					}

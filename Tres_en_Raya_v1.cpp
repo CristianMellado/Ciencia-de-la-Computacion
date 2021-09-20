@@ -25,8 +25,8 @@ int main (){
 		std::cout << "  option:";
 		std::cin>>option;
 		
+		// variables inicializadas por defectuo.
 		char a='1', b='2', c='3', d='4', e='5', f='6', g='7', h='8', i='9', winer='N';
-     // variables por defectuo.
 		
 		if(option==1){
 			std::cout << "\n\n==================================================\n";
@@ -34,7 +34,7 @@ int main (){
 			std::cout << "==================================================\n\n";
 			std::cout << "Enter name player 1:";
 			// std::cin>>name1;  // solo captura hasta cuando haga espacio.
-      fflush(stdin);  // para borrar el buffer del teclado.
+      			fflush(stdin);  // para borrar el buffer del teclado.
 			std::cin.getline(name1, 40, '\n');
 			
 			do{
@@ -46,7 +46,7 @@ int main (){
 			else p2 = 'X';
 			
 			std::cout << "Enter name player 2:";
-      fflush(stdin);
+      			fflush(stdin);
 			std::cin.getline(name2, 40, '\n');  // variable, espacio de memoria, fin de captuda de datos.
 			
 			turno = p1;  // empezamos con el player 1
@@ -59,7 +59,7 @@ int main (){
 				std::cout << "================== Tres en raya ==================\n";
 				std::cout << "==================================================\n\n";
 
-        // impresion de tabla
+        			// impresion de tabla
 				std::cout<<"                     "<<a<<" | "<<b<<" | "<<c<<std::endl;    
 				std::cout<<"                    ..........."<<std::endl;
 				std::cout<<"                     "<<d<<" | "<<e<<" | "<<f<<std::endl;
@@ -86,7 +86,7 @@ int main (){
 					winer = p2;
 				}
 				
-        // impresion del ganador.
+        			// impresion del ganador.
 				if (winer!='N'){
 					std::cout << "==================================================\n";
 					std::cout << "==================================================\n";
@@ -96,7 +96,7 @@ int main (){
 						std::cout << "                \""<<name2 <<"\" WIN "<<"\n";
 					std::cout << "==================================================\n";
 					std::cout << "==================================================\n\n";
-					break;
+					break;  // salimos del while o bucle.
 				}
 
 				//En este if usamos el codigo ascci de "O=79" y "X=88" donde hay 5 "O" y 4 "X" esto porque el minimo debe ser el numero menor como es el caso de 5"O"s para superar el muro de todas las variables utilizadas.
@@ -106,20 +106,20 @@ int main (){
 					std::cout << "===================== Empate =====================\n";
 					std::cout << "==================================================\n";
 					std::cout << "==================================================\n\n";
-					break;
+					break;  // salimos del while o bucle.
 				}
 				
 				
 				do{
 					error=false;
 
-          std::cout<<" Ahora es turno de ";
-          if(turno==p1) std::cout<<name1;
-          else std::cout<<name2;
+					std::cout<<" Ahora es turno de ";
+					if(turno==p1) std::cout<<name1;
+					else std::cout<<name2;
           
 					std::cout<<" con \""<< turno <<"\" : "; std::cin>>numero;
 
-					if(numero==1 && a=='1'){
+					if(numero==1 && a=='1'){  // solo entrará si la letra es igual a la de por defectuo y la opcion del número.
 						a=turno;
 					}
 					else if(numero==2 && b=='2'){
@@ -148,7 +148,7 @@ int main (){
 					}
 					else{
 						error=true; // activacion en caso de que no haya entrado a un if.
-						std::cout<<"\nerror esa casilla ya esta siendo usada\n"<<std::endl;
+						std::cout<<"\nerror esa casilla ya esta siendo usada\n\a"<<std::endl;
 					}
 				}while(error==true); // validación en caso que se repita un variable ya utilizada.
 					

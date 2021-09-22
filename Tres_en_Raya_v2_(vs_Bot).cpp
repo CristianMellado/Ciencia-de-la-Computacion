@@ -50,9 +50,9 @@ int main (){
 			// std::cin.getline(name2, 40, '\n');  // variable, espacio de memoria, fin de captuda de datos.
 			std::cin>>name2;
 			
-      if (rand()%2 == 1) turno = p1;
-      else turno = p2;
-			
+	        if (rand()%2 == 1) turno = p1;
+	        else turno = p2;
+
 			std::cout<<std::endl<<name1<<" jugara con: "<<p1<<std::endl;
 			std::cout<<name2<<" jugara con: "<<p2<<std::endl;
 			
@@ -157,7 +157,7 @@ int main (){
 			std::cout << "\n\n==================================================\n";
 			std::cout << "================== Tres en raya ==================\n";
 			std::cout << "==================================================\n\n";
-
+			// dificultades del bot
 			std::cout << "      1. Easy\n";
 			std::cout << "      2. Normal\n";
 			std::cout << "      3. Hardcore\n\n";
@@ -176,8 +176,8 @@ int main (){
 			if (p1=='X') p2 = 'O';
 			else p2 = 'X';
 			
-      if (rand()%2 == 1) turno = p1;
-      else turno = p2;
+			if (rand()%2 == 1) turno = p1; # elegi aleatoriamente un turno
+		    else turno = p2;
 			
 			std::cout<<std::endl<<" Tu jugaras con: "<<p1<<std::endl;
 			std::cout<<" Bot jugara con: "<<p2<<std::endl;
@@ -224,174 +224,178 @@ int main (){
 					break;
 				}
 				
+				//validacion de turnos
 				do{
 					error=false;
 					if (turno==p1){
 						std::cout<<" Ahora es tu turno con \""<< turno <<"\" : ";std::cin>>numero;
 					}
+					//proceso de dificultades de bot
 					else{
-            int random_state = 0;
-            
-            if (option == 2){
-              random_state = rand() % 2;
-            }
-            
+						int random_state = 0;
+						//dificultad intermedia
+						if (option == 2){
+							random_state = rand() % 2;
+						}
+						//dificultad easy
 						if (option == 1 || random_state==1){ 
 							numero = 1 + rand() % 9;
-            }
-            else if (option == 3 || random_state==0){
-
-              if (a+b==p2*2 &&  c =='3'){
+						}
+						//dificultad hardcore 
+						else if (option == 3 || random_state==0){
+							// condicionales del bot para intentar ganar
+							if (a+b==p2*2 &&  c =='3'){
 								numero = 3;        
-              }
-              else if (a+c==p2*2 && b =='2'){
+							}
+							else if (a+c==p2*2 && b =='2'){
 								numero = 2;
-              }
-              else if (b+c==p2*2 && a == '1'){
+							}
+							else if (b+c==p2*2 && a == '1'){
 								numero = 1;
-              }
-              else if (a+d==p2*2 && g == '7'){
-                numero = 7;
-              }
+							}
+							else if (a+d==p2*2 && g == '7'){
+								numero = 7;
+							}
 							else if (a+g==p2*2 && d == '4'){
 								numero = 4;
-              }
-              else if (d+g==p2*2 && a == '1'){
+							}
+							else if (d+g==p2*2 && a == '1'){
 								numero = 1;
-              }
-              else if (d+e==p2*2 && f == '6'){
+							}
+							else if (d+e==p2*2 && f == '6'){
 								numero = 6;
-              }
-              else if (d+f==p2*2 && e == '5'){
+							}
+							else if (d+f==p2*2 && e == '5'){
 								numero = 5;
-              }
-              else if (e+f==p2*2 && d == '4'){
+							}
+							else if (e+f==p2*2 && d == '4'){
 								numero = 4;
-              }
+							}
 							else if (g+h==p2*2 && i == '9'){
 								numero = 9;
-              }
+							}
 							else if (h+i==p2*2 && g=='7'){
 								numero = 7;
-              }
+							}
 							else if (g+i==p2*2 && h=='8'){
 								numero = 8;
-              }
-              else if (b+e==p2*2 && h=='8'){
+							}
+							else if (b+e==p2*2 && h=='8'){
 								numero = 8;
-              }
-              else if (b+h==p2*2 && e=='5'){
+							}
+							else if (b+h==p2*2 && e=='5'){
 								numero = 5;
-              }
-              else if (e+h==p2*2 && b=='2'){
+							}
+							else if (e+h==p2*2 && b=='2'){
 								numero = 2;
-              }
-              else if (c+f==p2*2 && i=='9'){
+							}
+							else if (c+f==p2*2 && i=='9'){
 								numero = 9;
-              }
-              else if (f+i==p2*2 && c=='3'){
+							}
+							else if (f+i==p2*2 && c=='3'){
 								numero = 3;
-              }
-              else if (c+i==p2*2 && f=='6'){
+							}
+							else if (c+i==p2*2 && f=='6'){
 								numero = 6;
-              }
+							}
 							else if (a+e==p2*2 && i=='9'){
 								numero = 9;
-              }
-              else if (a+i==p2*2 && e=='5'){
+							}
+							else if (a+i==p2*2 && e=='5'){
 								numero = 5;
-              }
-              else if (e+i==p2*2 && a=='1'){
+							}
+							else if (e+i==p2*2 && a=='1'){
 								numero = 1;
-              }
-              else if (c+e==p2*2 && g=='7'){
+							}
+							else if (c+e==p2*2 && g=='7'){
 								numero = 7;
-              }
-              else if (c+g==p2*2 && e=='5'){
+							}
+							else if (c+g==p2*2 && e=='5'){
 								numero = 5;
-              }
-              else if (g+e==p2*2 && c=='3'){
+							}
+							else if (g+e==p2*2 && c=='3'){
 								numero =3;
-              }
-							// bot contradice
-              else if (a+b==p1*2 &&  c =='3'){
+							}
+							// condicionales del bot para bloquear al jugador
+							else if (a+b==p1*2 &&  c =='3'){
 								numero = 3;        
-              }
-              else if (a+c==p1*2 && b =='2'){
+							}
+							else if (a+c==p1*2 && b =='2'){
 								numero = 2;
-              }
-              else if (b+c==p1*2 && a == '1'){
+							}
+							else if (b+c==p1*2 && a == '1'){
 								numero = 1;
-              }
-              else if (a+d==p1*2 && g == '7'){
-                numero = 7;
-              }
+							}
+							else if (a+d==p1*2 && g == '7'){
+								numero = 7;
+							}
 							else if (a+g==p1*2 && d == '4'){
 								numero = 4;
-              }
-              else if (d+g==p1*2 && a == '1'){
+							}
+							else if (d+g==p1*2 && a == '1'){
 								numero = 1;
-              }
-              else if (d+e==p1*2 && f == '6'){
+							}
+							else if (d+e==p1*2 && f == '6'){
 								numero = 6;
-              }
-              else if (d+f==p1*2 && e == '5'){
+							}
+							else if (d+f==p1*2 && e == '5'){
 								numero = 5;
-              }
-              else if (e+f==p1*2 && d == '4'){
+							}
+							else if (e+f==p1*2 && d == '4'){
 								numero = 4;
-              }
+							}
 							else if (g+h==p1*2 && i == '9'){
 								numero = 9;
-              }
+							}
 							else if (h+i==p1*2 && g=='7'){
 								numero = 7;
-              }
+							}
 							else if (g+i==p1*2 && h=='8'){
 								numero = 8;
-              }
-              else if (b+e==p1*2 && h=='8'){
+							}
+							else if (b+e==p1*2 && h=='8'){
 								numero = 8;
-              }
-              else if (b+h==p1*2 && e=='5'){
+							}
+							else if (b+h==p1*2 && e=='5'){
 								numero = 5;
-              }
-              else if (e+h==p1*2 && b=='2'){
+							}
+							else if (e+h==p1*2 && b=='2'){
 								numero = 2;
-              }
-              else if (c+f==p1*2 && i=='9'){
+							}
+							else if (c+f==p1*2 && i=='9'){
 								numero = 9;
-              }
-              else if (f+i==p1*2 && c=='3'){
+							}
+							else if (f+i==p1*2 && c=='3'){
 								numero = 3;
-              }
-              else if (c+i==p1*2 && f=='6'){
+							}
+							else if (c+i==p1*2 && f=='6'){
 								numero = 6;
-              }
+							}
 							else if (a+e==p1*2 && i=='9'){
 								numero = 9;
-              }
-              else if (a+i==p1*2 && e=='5'){
+							}
+							else if (a+i==p1*2 && e=='5'){
 								numero = 5;
-              }
-              else if (e+i==p1*2 && a=='1'){
+							}
+							else if (e+i==p1*2 && a=='1'){
 								numero = 1;
-              }
-              else if (c+e==p1*2 && g=='7'){
+							}
+							else if (c+e==p1*2 && g=='7'){
 								numero = 7;
-              }
-              else if (c+g==p1*2 && e=='5'){
+							}
+							else if (c+g==p1*2 && e=='5'){
 								numero = 5;
-              }
-              else if (g+e==p1*2 && c=='3'){
+							}
+							else if (g+e==p1*2 && c=='3'){
 								numero =3;
-              }
-              else{
-                numero = 1 + rand() % 9;
-              }
-            }
+							}
+							else{
+								numero = 1 + rand() % 9;
+							}
+						}
 					}
-
+					
+         			//para  verificar si las casillas estan ocupadas y en caso no entre ni uno repetira que ingrese el numero nuevamente. 
 					if(numero==1 && a=='1'){
 						a=turno;
 					}

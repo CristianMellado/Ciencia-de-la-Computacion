@@ -5,6 +5,7 @@
 //	* Cristian Mellado Baca
 //	* Marcelo Torres Acuña
 //	* Alexander Carpio Mamani
+
 #include <iostream>  // libreria estandar para usar cin & cout
 #include <time.h>    // para usar random o rand
 

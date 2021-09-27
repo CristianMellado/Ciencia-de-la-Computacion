@@ -177,7 +177,7 @@ int main (){
 			if (p1=='X') p2 = 'O';
 			else p2 = 'X';
 			
-			if (rand()%2 == 1) turno = p1; # elegi aleatoriamente un turno
+			if (rand()%2 == 1) turno = p1; // elegi aleatoriamente un turno
 		    else turno = p2;
 			
 			std::cout<<std::endl<<" Tu jugaras con: "<<p1<<std::endl;

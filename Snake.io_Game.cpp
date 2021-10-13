@@ -10,10 +10,10 @@ Integrantes:
 
 #include <iostream>
 #include <time.h>
-#include "windows.hpp" // kbhit y getch
+#include "windows.hpp" // modulo simulacion de kbhit y getch
 #include <unistd.h>
 
-#define UP 65
+#define UP 65  // teclas para el segundo player.
 #define DOWN 66
 #define LEFT 68
 #define RIGHT 67
@@ -37,16 +37,16 @@ Integrantes:
 #define emoji_heart "\U0001f496" 
 #define emoji_win "\U0001f389"
 
-void select_emoji(std::string , std::string&, std::string);
+void select_emoji(std::string , std::string&, std::string); // funcion para elegir skin de emoji.
 
-bool collide(int player[][2], int other[][2], int other_score){
+bool collide(int player[][2], int other[][2], int other_score){  // deteccion de colicon con la cola del otro jugador.
   for(int i=1;i<other_score+1;i++){
     if(player[0][0]==other[i][0] && player[0][1]==other[i][1]) return true;
   }
     return false;
 }
 
-bool collide_app(int x, int y, int app[][4]){
+bool collide_app(int x, int y, int app[][4]){  // deteccion de colicion con las manzanas.
   for(int i=0;i<20;i++){
     if (x==app[i][0] && y==app[i][1] && app[i][2]==1){
       app[i][2] = 0;
@@ -57,6 +57,7 @@ bool collide_app(int x, int y, int app[][4]){
 }
 
 int main(){
+  // inicializacion de variables
   int x, y,a,b, score=0, snake[200][2] = {{10,10}}, snake2[200][2] = {{10,11}}, score2=0, live1=3, live2=3, apples[20][4], n_app, n_fruit;
   char state2=DOWN, state='w';
 	bool tail, apple_show, tail2;
@@ -68,17 +69,17 @@ int main(){
     }
   }
 
-  select_emoji(" Player 1", emoji_player1, emoji_player2);
+  select_emoji(" Player 1", emoji_player1, emoji_player2); // llama a la funcion de eleccion de emoji.
   select_emoji(" Player 2", emoji_player2, emoji_player1);
 
 	while(1){
     std::cout<<"\n\t"<<emoji_heart<<" Player " << emoji_player1 << ": "<<live1<< "\t\t"<<emoji_heart<<" Player " << emoji_player2 << ": "<<live2<<std::endl<<std::endl;
-    
+    // Imprime cuadradito por cuadradito el mapa del juego con ancho de 22x22.
 		for (int i=0; i<22; i++){
 			for (int j=0; j<22; j++){
 				tail = false;
 				for (int k=0; k<score+1; k++){ // recorre la serpiente
-					if (snake[k][0]==j && snake[k][1]==i) tail = true;
+					if (snake[k][0]==j && snake[k][1]==i) tail = true;  // evalua si una posicion de la serpiente concide con el mapa.
 				}         
 
 				tail2 = false;
@@ -119,6 +120,7 @@ int main(){
 			std::cout<<std::endl;
 		}
 
+    // Evalua si un jugador tiene 0 vidas.
     if (live1==0){
 			std::cout<<"\n\t\t\t YOU WIN player "<<emoji_player2<<" "<<emoji_win<<"\n\n";
 			break;     
@@ -128,6 +130,7 @@ int main(){
 			break;
 		}
 
+    // Llamada de collicion con otro jugador mediante el uso de if.
 		x = snake[0][0]; y = snake[0][1]; 
 		//if (x == 0 || x == 21 || y == 0 || y == 21 || collide(snake,snake2,score2)){
     if (collide(snake,snake2,score2)){
@@ -146,13 +149,15 @@ int main(){
       b = 11;
     }
 
+    // detecta si una tecla fue presionada.
 		if (my_kbhit()){
-      char key = my_getch();
+      char key = my_getch();  // obtenemos del buffer la ultima tecla presionada.
         //if (key == 97 || key == 100 || key == 119 || key ==115)
       if (key == 'a' || key == 'd' || key == 'w' || key == 's') state = key;
       if (key == LEFT || key == RIGHT || key == UP || key == DOWN) state2 = key;
     }
 
+    // Evalua el estado de las teclas de cada jugador y conduce su trayectoria.
     switch(state){
 			case 'a': if (x > 1) x--;
                 else state = 'd';
@@ -182,7 +187,8 @@ int main(){
                 else state2 = UP;
                 break;
     }
-		// la cola sigue a la cabeza
+
+		// la cola sigue a la cabeza.
 		int ago_x=snake[0][0], ago_y=snake[0][1], copy_x, copy_y;
 		for (int i=1; i<score+1; i++){
 			copy_x = snake[i][0];
@@ -205,6 +211,7 @@ int main(){
 		}
 		snake2[0][0] = a; snake2[0][1] = b;
 
+    // genera manzanas aleatorias en el mapa.
     srand(time(NULL));
     n_app = rand()%(20);
     if (apples[n_app][2]==0){
@@ -215,6 +222,7 @@ int main(){
       apples[n_app][3] = rand()%6;
     }
 
+    // valida si un jugador coliciono con una manzana.
     if (collide_app(snake[0][0], snake[0][1], apples)){
       score++;
     }
@@ -238,6 +246,7 @@ void select_emoji(std::string text, std::string& var, std::string selected){
   std::cout<<" 5)"<<emoji_5<<std::endl;
   std::cout<<" 6)"<<emoji_6<<std::endl;
 
+  // validacion de eleccion de emojis.
   do{
     std::cout <<text<<" enter emoji: ";std::cin>>op;
     error = false;

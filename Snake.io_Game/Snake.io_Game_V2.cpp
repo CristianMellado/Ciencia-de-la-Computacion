@@ -1,4 +1,4 @@
-/***************************************************************
+/**************************************************************
 Juego: Snake.io Game
 UCSP : CIENCIAS DE LA COMPUTACIÓN
 Grupo: 1
@@ -6,7 +6,7 @@ Integrantes:
  - Alexander Carpio Mamani
  - Marcelo Torres Acuña
  - Cristian Mellado Baca
-****************************************************************/
+***************************************************************/
 
 #include <iostream>
 #include <time.h>
